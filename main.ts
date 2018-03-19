@@ -64,7 +64,7 @@ enum GroveGesture {
 /**
  * Functions to operate lqjgrove module.
  */
-//% weight=10 color=#9F79EE icon="\uf108" block="Grove"
+//% weight=10 color=#9F79EE icon="\uf108" block="Motor"
 namespace lqjgrove {
     const gestureEventId = 3100;
     let lastGesture = GroveGesture.None;

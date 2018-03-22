@@ -1,77 +1,78 @@
-enum Motor {
-    //% block="left"
-    Left = 8448,
-    //% block="right"
-    Right = 8192
-}
 
-enum MotorDirection {
-    //% block="forward"
-    Forward = 0,
-    //% block="reverse"
-    Reverse = 1
-}
 
-enum MotorPower {
-    //%block="ON"
-    On = 28673,
-    //%block="OFF"
-    Off = 28672
-}
+//weight=10 color=#9F79EE icon="\uf1d0" block="Motor"
+namespace Motor {
 
-/**
- * Functions to operate the moto:bit
- */
-//% weight=10 color=#9F79EE icon="\uf1d0" block="Motor"
-namespace motobit {
+    export enum Motors {
+        M1 = 0x1,
+        M2 = 0x2
+    }
+
+
+
+    //% blockId=maiji_motor_run block="Motor|%index|speed %speed"
+    //% weight=85
+    //% speed.min=-1023 speed.max=1023
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function MotorRun(index: Motors, speed: number): void {
+      if (index==1){
+        if (speed>0){
+          pins.digitalWritePin(DigitalPin.P8,0);
+          pins.analogWritePin(AnalogPin.P12,speed);
+        }else{
+          pins.digitalWritePin(DigitalPin.P8,1);
+          pins.analogWritePin(AnalogPin.P12,-speed);
+        }
+
+      }else{
+        if (speed>0){
+          pins.digitalWritePin(DigitalPin.P14,0);
+          pins.analogWritePin(AnalogPin.P15,speed);
+        }else{
+          pins.digitalWritePin(DigitalPin.P14,1);
+          pins.analogWritePin(AnalogPin.P15,-speed);
+        }
+      }
+    }
+
 	/**
-	 * Sets the speed and direction of either the left motor or the right motor.
-     * @param motor the motor to act on
-     * @param direction forward or backward
-     * @param speed percent of maximum speed, eg: 50
-	 */
-    //% blockId="motobit_setMotor" block="move %motor_number motor|motor %path|at %speed|%"
-    //% speed.min=0 speed.max=100
+	 * Execute single motors with delay
+	 * @param index Motor Index; eg: M1,M2
+	 * @param speed [-1023-1023] speed of motor; eg: 150, -150
+	 * @param delay seconde delay to stop; eg: 1
+	*/
+    //% blockId=maiji_motor_rundelay block="Motor|%index|speed %speed|delay %delay|s"
+    //% weight=81
+    //% speed.min=-1023 speed.max=1023
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function MotorRunDelay(index: Motors, speed: number, delay: number): void {
+        MotorRun(index, speed);
+        basic.pause(delay * 1000);
+        MotorStop(index);
+    }
+
+
+
+    //% blockId=maiji_stop block="Motor Stop|%index|"
     //% weight=80
-    export function setMotorSpeed(motor: Motor, direction: MotorDirection, speed: number): void {
-        let pwr = 0
-        speed = Math.abs(speed)
-        if (speed > 100) {
-            speed = 100
-        }
-
-        if (direction == MotorDirection.Forward) {
-            pwr = pins.map(speed, 0, 100, 0, 127)
-            pwr = 128 + pwr
-        }
-        else {
-            pwr = pins.map(speed, 0, 100, 127, 0)
-        }
-
-        pins.i2cWriteNumber(89, (motor + pwr), NumberFormat.Int16BE)
+    export function MotorStop(index: Motors): void {
+      if (index==1){
+          pins.digitalWritePin(DigitalPin.P8,0);
+          pins.digitalWritePin(DigitalPin.P12,0);
+      }else{
+          pins.digitalWritePin(DigitalPin.P14,0);
+          pins.digitalWritePin(DigitalPin.P15,0);
+      }
     }
 
-	/**
-	 * Turns the motors on or off.
-	 */
-    //% weight=90
-    //% blockId="motobit_enable" block="turn motors %command"
-    export function enable(command: MotorPower): void {
-        pins.i2cWriteNumber(89, command, NumberFormat.Int16BE)
+    //% blockId=robotbit_stop_all block="Motor Stop All"
+    //% weight=79
+    //% blockGap=50
+    export function MotorStopAll(): void {
+        for (let idx = 1; idx <= 2; idx++) {
+            MotorStop(idx);
+        }
     }
 
-	/**
-	 * Changes the polarity of the selected motor.
-	 * i.e. Forward -> Backward and Backward -> Forward
-	 */
-    //% blockId="motobit_invert" block="set %motor_number|motor invert to %invert"
-    export function invert(motor: Motor, invert: boolean): void {
-        const temp_number = invert ? 1 : 0;
-        if (motor == Motor.Right) {
-            pins.i2cWriteNumber(89, (4608 + temp_number), NumberFormat.Int16BE)
-        }
-        else {
-            pins.i2cWriteNumber(89, (4864 + temp_number), NumberFormat.Int16BE)
-        }
-    }
+
 }

@@ -1,7 +1,7 @@
 
 
-//% weight=10 color=#9F79EE icon="\uf1d0" block="Motor"
-namespace Motor {
+//% weight=10 color=#9F79EE icon="\uf1d0" block="Magibit"
+namespace Magibit {
 
     export enum Motors {
         M1 = 0x1,

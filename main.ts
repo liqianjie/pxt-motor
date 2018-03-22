@@ -65,7 +65,7 @@ namespace Magibit {
       }
     }
 
-    //% blockId=robotbit_stop_all block="Motor Stop All"
+    //% blockId=maiji_stop_all block="Motor Stop All"
     //% weight=79
     //% blockGap=50
     export function MotorStopAll(): void {

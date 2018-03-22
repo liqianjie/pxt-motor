@@ -9,8 +9,7 @@
     },
     "files": [
         "README.md",
-        "main.ts",
-        "_locales/zh/magibit-strings.json"
+        "main.ts"
     ],
     "testFiles": [
         "test.ts"

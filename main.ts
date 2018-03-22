@@ -1,6 +1,6 @@
 
 
-//weight=10 color=#9F79EE icon="\uf1d0" block="Motor"
+//% weight=10 color=#9F79EE icon="\uf1d0" block="Motor"
 namespace Motor {
 
     export enum Motors {

@@ -1,6 +1,6 @@
 
 
-//% weight=10 color=#9F79EE icon="\uf1d0" block="Magibit"
+//% weight=10 color=#ff7d0a icon="\uf2d6" block="Magibit"
 namespace Magibit {
 
     export enum Motors {

@@ -8,6 +8,24 @@ namespace Magibit {
         M2 = 0x2
     }
 
+    export enum Light {
+        P0 = AnalogPin.P0,
+        P1 = AnalogPin.P1,
+        P2 = AnalogPin.P2
+    }
+
+
+    /**
+     * Read Light
+     * @param pin Light Index; eg: AnalogPin.P0,AnalogPin.P0
+    */
+      //% blockId=maiji_light block="Light read number at|%pin"
+      //% weight=81
+      export function LightRead(pin: Light): number{
+        let lightRead = 0;
+        lightRead =  pins.analogReadPin(pin);
+        return lightRead;
+      }
 
 
     //% blockId=maiji_motor_run block="Motor|%index|speed %speed"

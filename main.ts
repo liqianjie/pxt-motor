@@ -17,7 +17,7 @@ namespace Magibit {
 
     /**
      * Read Light
-     * @param pin Light Index; eg: AnalogPin.P0,AnalogPin.P0
+     * @param pin Light Index; eg: AnalogPin.P0,AnalogPin.P1
     */
       //% blockId=maiji_light block="Light read number at|%pin"
       //% weight=81

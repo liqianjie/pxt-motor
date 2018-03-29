@@ -15,15 +15,88 @@ namespace Magibit {
     }
 
 
+    export enum P1316 {
+        P13 = DigitalPin.P13,
+        P16 = DigitalPin.P16
+    }
+
+
     /**
      * Read Light
      * @param pin Light Index; eg: AnalogPin.P0,AnalogPin.P1
     */
-      //% blockId=maiji_light block="Light read number at|%pin"
+      //% blockId=maiji_light block="Light read analog at|%pin"
       //% weight=81
       export function LightRead(pin: Light): number{
         let lightRead = 0;
         lightRead =  pins.analogReadPin(pin);
+        return lightRead;
+      }
+
+
+      //% blockId=maiji_sound block="Sound read analog at|%pin"
+      //% weight=81
+      export function SoundRead(pin: Light): number{
+        let lightRead = 0;
+        lightRead =  pins.analogReadPin(pin);
+        return lightRead;
+      }
+
+
+      //% blockId=maiji_soil_moisture block="Soil Moisture read analog at|%pin"
+      //% weight=81
+      export function SoilMoistureRead(pin: Light): number{
+        let lightRead = 0;
+        lightRead =  pins.analogReadPin(pin);
+        return lightRead;
+      }
+
+
+      //% blockId=maiji_Potentiometer block="Potentiometer read analog at|%pin"
+      //% weight=81
+      export function PotentiometerRead(pin: Light): number{
+        let lightRead = 0;
+        lightRead =  pins.analogReadPin(pin);
+        return lightRead;
+      }
+
+      //% blockId=maiji_infrared block="Infrared read digital at|%pin"
+      //% weight=81
+      export function InfraredRead(pin: P1316): number{
+        let lightRead = 0;
+        lightRead =  pins.digitalReadPin(pin);
+        return lightRead;
+      }
+
+      //% blockId=maiji_ultrasonic_sensor block="Ultrasonic Sensor read digital at|%pin"
+      //% weight=81
+      export function UltrasonicSensorRead(pin: P1316): number{
+        let lightRead = 0;
+        lightRead =  pins.digitalReadPin(pin);
+        return lightRead;
+      }
+
+      //% blockId=maiji_air_temperature block="Air Temperature read digital at|%pin"
+      //% weight=81
+      export function AirTemperatureRead(pin: P1316): number{
+        let lightRead = 0;
+        lightRead =  pins.digitalReadPin(pin);
+        return lightRead;
+      }
+
+      //% blockId=maiji_air_humidity block="Air Humidity read digital at|%pin"
+      //% weight=81
+      export function AirHumidityRead(pin: P1316): number{
+        let lightRead = 0;
+        lightRead =  pins.digitalReadPin(pin);
+        return lightRead;
+      }
+
+      //% blockId=maiji_Motor_Speed_Sensor block="Motor Speed Sensor read digital at|%pin"
+      //% weight=81
+      export function MotorSpeedSensorRead(pin: P1316): number{
+        let lightRead = 0;
+        lightRead =  pins.digitalReadPin(pin);
         return lightRead;
       }
 

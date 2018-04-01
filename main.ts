@@ -8,7 +8,45 @@ namespace Magibit {
         M2 = 0x2
     }
 
-    
+    export enum Light {
+        P0 = AnalogPin.P0,
+        P1 = AnalogPin.P1,
+        P2 = AnalogPin.P2
+    }
+
+
+    export enum P1316 {
+        P13 = DigitalPin.P13,
+        P16 = DigitalPin.P16
+    }
+
+    export enum A1 {
+        P1 = DigitalPin.P1,
+        P2 = DigitalPin.P2
+    }
+
+    export enum A2 {
+        P0 = DigitalPin.P0,
+        P1 = DigitalPin.P1
+    }
+
+    export enum A12 {
+        A1 = 0x1,
+        A2 = 0x2
+    }
+
+    export enum ONOFF {
+        ON = 0x1,
+        OFF = 0x0
+    }
+
+    export enum Servos {
+        P0 = DigitalPin.P0,
+        P1 = DigitalPin.P1,
+        P2 = DigitalPin.P2,
+        P13 = DigitalPin.P13,
+        P16 = DigitalPin.P16
+    }
 
 
 

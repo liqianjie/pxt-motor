@@ -1,12 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <variables></variables>
-  <block type="pxt-on-start" id="#hlfZL8XSJ|DzIo%tu29" x="0" y="0">
-    <statement name="HANDLER">
-      <block type="maiji_light_onoff" id="3_w(fM!yS*0e,IUgV:ZS">
-        <field name="pin">Magibit.Light.P0</field>
-        <field name="onoff">Magibit.ONOFF.ON</field>
-      </block>
-    </statement>
-  </block>
+  <block type="pxt-on-start" id="#hlfZL8XSJ|DzIo%tu29" x="0" y="0"></block>
   <block type="device_forever" id="8tP%4~Mjlyb3wo(c{ug{" x="187" y="214"></block>
 </xml>

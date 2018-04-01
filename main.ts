@@ -50,16 +50,6 @@ namespace Magibit {
 
 
 
-          //% blockId=maiji_light block="Light read analog at |%pin"
-          //% weight=81
-          export function LightRead(pin: Light): number{
-            let lightRead = 0;
-            lightRead =  pins.analogReadPin(pin);
-            return lightRead;
-          }
-
-
-
 
 
 

@@ -49,10 +49,7 @@ namespace Magibit {
     }
 
 
-    /**
-         * Read Light
-         * @param pin Light Index; eg: AnalogPin.P0,AnalogPin.P1
-        */
+
           //% blockId=maiji_light block="Light read analog at|%pin"
           //% weight=81
           export function LightRead(pin: Light): number{
@@ -62,57 +59,7 @@ namespace Magibit {
           }
 
 
-          //% blockId=maiji_sound block="Sound read analog at|%pin"
-          //% weight=81
-          export function SoundRead(pin: Light): number{
-            let lightRead = 0;
-            lightRead =  pins.analogReadPin(pin);
-            return lightRead;
-          }
 
-
-          //% blockId=maiji_soil_moisture block="Soil Moisture read analog at|%pin"
-          //% weight=81
-          export function SoilMoistureRead(pin: Light): number{
-            let lightRead = 0;
-            lightRead =  pins.analogReadPin(pin);
-            return lightRead;
-          }
-
-
-          //% blockId=maiji_Potentiometer block="Potentiometer read analog at|%pin"
-          //% weight=81
-          export function PotentiometerRead(pin: Light): number{
-            let lightRead = 0;
-            lightRead =  pins.analogReadPin(pin);
-            return lightRead;
-          }
-
-          //% blockId=maiji_Joystick_speed block="Joystick read speed at|%pin"
-          //% weight=81
-          export function JoystickSpeedRead(pin: A12): number{
-            let lightRead = 0;
-            if  (pin==0){
-              lightRead =  pins.digitalReadPin(DigitalPin.P1);
-              return lightRead;
-            }else{
-              lightRead =  pins.digitalReadPin(DigitalPin.P0);
-              return lightRead;
-            }
-          }
-
-          //% blockId=maiji_Joystick_angle block="Joystick read angle at|%pin"
-          //% weight=81
-          export function JoystickAngleRead(pin: A12): number{
-            let lightRead = 0;
-            if  (pin==0){
-              lightRead =  pins.digitalReadPin(DigitalPin.P2);
-              return lightRead;
-            }else{
-              lightRead =  pins.digitalReadPin(DigitalPin.P1);
-              return lightRead;
-            }
-          }
 
 
 

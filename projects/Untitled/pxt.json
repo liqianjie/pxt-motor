@@ -2,7 +2,8 @@
     "name": "Untitled",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "Magibit": "github:liqianjie/pxt-motor#fac3e66652b19c6b0c62e90f39152e229a4443dc"
     },
     "description": "",
     "files": [

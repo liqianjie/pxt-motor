@@ -8,96 +8,10 @@ namespace Magibit {
         M2 = 0x2
     }
 
-    export enum Light {
-        P0 = AnalogPin.P0,
-        P1 = AnalogPin.P1,
-        P2 = AnalogPin.P2
-    }
-
-
-    export enum P1316 {
-        P13 = DigitalPin.P13,
-        P16 = DigitalPin.P16
-    }
-
-    export enum A1 {
-        P1 = DigitalPin.P1,
-        P2 = DigitalPin.P2
-    }
-
-    export enum A2 {
-        P0 = DigitalPin.P0,
-        P1 = DigitalPin.P1
-    }
-
-    export enum A12 {
-        A1 = 0x1,
-        A2 = 0x2
-    }
-
-    export enum ONOFF {
-        ON = 0x1,
-        OFF = 0x0
-    }
-
-    export enum Servos {
-        P0 = DigitalPin.P0,
-        P1 = DigitalPin.P1,
-        P2 = DigitalPin.P2,
-        P13 = DigitalPin.P13,
-        P16 = DigitalPin.P16
-    }
+    
 
 
 
-
-
-          /**
-           * Water Pump
-          */
-            //% blockId=waterpump_onoff_delay block="Water Pump|%index|Status %onoff delay %delay ms"
-            //% weight=100
-            //% degree.min=0 degree.max=180
-            export function WaterPumpOnoffDelay(index: Motors, onoff: ONOFF, delay:number): void {
-              let speed=0;
-              if (index==1){
-
-                speed = pins.analogReadPin(AnalogPin.P12);
-
-                if (onoff==1){
-                  pins.analogWritePin(AnalogPin.P12,1023);
-                }else{
-                  pins.analogWritePin(AnalogPin.P12,0);
-                }
-
-                basic.pause(delay );
-
-                pins.analogWritePin(AnalogPin.P12,speed);
-
-              }else{
-
-                speed = pins.analogReadPin(AnalogPin.P15);
-
-                if (onoff==1){
-                  pins.analogWritePin(AnalogPin.P15,1023);
-                }else{
-                  pins.analogWritePin(AnalogPin.P15,0);
-                }
-
-                basic.pause(delay);
-
-                pins.analogWritePin(AnalogPin.P15,speed);
-              }
-            }
-
-
-      //% blockId=maiji_Motor_Speed_Sensor block="Motor Speed Sensor read digital at|%pin"
-      //% weight=81
-      export function MotorSpeedSensorRead(pin: P1316): number{
-        let lightRead = 0;
-        lightRead =  pins.digitalReadPin(pin);
-        return lightRead;
-      }
 
 
     //% blockId=maiji_motor_run block="Motor|%index|speed %speed"

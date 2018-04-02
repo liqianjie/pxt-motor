@@ -9,9 +9,9 @@ namespace Magibit {
     }
 
     export enum Light {
-        P0 = AnalogPin.P0,
-        P1 = AnalogPin.P1,
-        P2 = AnalogPin.P2
+        P0 = 0,
+        P1 = 1,
+        P2 = 2
     }
 
 
@@ -52,7 +52,14 @@ namespace Magibit {
     //% blockId=maiji_light block="Light read analog at |%pin"
     export function LightRead(pin: Light): number{
       let lightRead = 0;
-      //lightRead =  pins.analogReadPin(pin);
+
+      AnalogPin pinTemp = AnalogPin.P0;
+      if (pinTemp==1){
+          pinTemp = AnalogPin.P1;
+      }else if (pinTemp==2){
+        pinTemp = AnalogPin.P2;
+      }
+      lightRead =  pins.analogReadPin(pinTemp);
       return lightRead;
     }
 
@@ -60,6 +67,14 @@ namespace Magibit {
     export function SoundRead(pin: Light): number{
       let lightRead = 0;
       //lightRead =  pins.analogReadPin(pin);
+
+      AnalogPin pinTemp = AnalogPin.P0;
+      if (pinTemp==1){
+          pinTemp = AnalogPin.P1;
+      }else if (pinTemp==2){
+        pinTemp = AnalogPin.P2;
+      }
+      lightRead =  pins.analogReadPin(pinTemp);
       return lightRead;
     }
 

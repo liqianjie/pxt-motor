@@ -49,7 +49,19 @@ namespace Magibit {
     }
 
 
+    //% blockId=maiji_light block="Light read analog at |%pin"
+    export function LightRead(pin: Light): number{
+      let lightRead = 0;
+      //lightRead =  pins.analogReadPin(pin);
+      return lightRead;
+    }
 
+    //% blockId=maiji_sound block="Sound read analog at |%pin"
+    export function SoundRead(pin: Light): number{
+      let lightRead = 0;
+      //lightRead =  pins.analogReadPin(pin);
+      return lightRead;
+    }
 
 
 

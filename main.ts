@@ -52,9 +52,14 @@ namespace Magibit {
     //% blockId=maiji_light block="Light read analog at |%pin"
     export function LightRead(pin: Light): number{
       let lightRead = 0;
+      if(pin==0){
+        lightRead =  pins.analogReadPin(AnalogPin.P0);
+      }else if(pin==1){
+        lightRead =  pins.analogReadPin(AnalogPin.P1);
+      }else if(pin==2){
+        lightRead =  pins.analogReadPin(AnalogPin.P2);
+      }
 
-
-      lightRead =  pins.analogReadPin(AnalogPin.P0);
       return lightRead;
     }
 
@@ -63,7 +68,13 @@ namespace Magibit {
       let lightRead = 0;
       //lightRead =  pins.analogReadPin(pin);
 
-
+      if(pin==0){
+        lightRead =  pins.analogReadPin(AnalogPin.P0);
+      }else if(pin==1){
+        lightRead =  pins.analogReadPin(AnalogPin.P1);
+      }else if(pin==2){
+        lightRead =  pins.analogReadPin(AnalogPin.P2);
+      }
 
       //
       return lightRead;

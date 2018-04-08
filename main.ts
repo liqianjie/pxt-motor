@@ -59,7 +59,7 @@ namespace Magibit {
       }else if (pinTemp==2){
         pinTemp = AnalogPin.P2;
       }
-      lightRead =  pins.analogReadPin(pinTemp);
+      //lightRead =  pins.analogReadPin(pinTemp);
       return lightRead;
     }
 
@@ -74,7 +74,7 @@ namespace Magibit {
       }else if (pinTemp==2){
         pinTemp = AnalogPin.P2;
       }
-      lightRead =  pins.analogReadPin(pinTemp);
+      //lightRead =  pins.analogReadPin(pinTemp);
       return lightRead;
     }
 

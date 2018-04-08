@@ -53,13 +53,8 @@ namespace Magibit {
     export function LightRead(pin: Light): number{
       let lightRead = 0;
 
-      AnalogPin pinTemp = AnalogPin.P0;
-      if (pin==1){
-          pinTemp = AnalogPin.P1;
-      }else if (pin==2){
-        pinTemp = AnalogPin.P2;
-      }
-      lightRead =  pins.analogReadPin(pinTemp);
+
+      lightRead =  pins.analogReadPin(AnalogPin.P0);
       return lightRead;
     }
 
@@ -69,13 +64,7 @@ namespace Magibit {
       //lightRead =  pins.analogReadPin(pin);
 
 
-      AnalogPin pinTemp = AnalogPin.P0;
-      if (pin==1){
-          pinTemp = AnalogPin.P1;
-      }else if (pin==2){
-        pinTemp = AnalogPin.P2;
-      }
-      lightRead =  pins.analogReadPin(pinTemp);
+
       //
       return lightRead;
     }

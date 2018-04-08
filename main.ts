@@ -54,12 +54,12 @@ namespace Magibit {
       let lightRead = 0;
 
       AnalogPin pinTemp = AnalogPin.P0;
-      if (pinTemp==1){
+      if (pin==1){
           pinTemp = AnalogPin.P1;
-      }else if (pinTemp==2){
+      }else if (pin==2){
         pinTemp = AnalogPin.P2;
       }
-      //lightRead =  pins.analogReadPin(pinTemp);
+      lightRead =  pins.analogReadPin(pinTemp);
       return lightRead;
     }
 
@@ -68,13 +68,15 @@ namespace Magibit {
       let lightRead = 0;
       //lightRead =  pins.analogReadPin(pin);
 
+
       AnalogPin pinTemp = AnalogPin.P0;
-      if (pinTemp==1){
+      if (pin==1){
           pinTemp = AnalogPin.P1;
-      }else if (pinTemp==2){
+      }else if (pin==2){
         pinTemp = AnalogPin.P2;
       }
-      //lightRead =  pins.analogReadPin(pinTemp);
+      lightRead =  pins.analogReadPin(pinTemp);
+      //
       return lightRead;
     }
 

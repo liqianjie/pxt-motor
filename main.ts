@@ -82,6 +82,67 @@ namespace Magibit {
 
 
 
+              //% blockId=maiji_soil_moisture block="Soil Moisture read analog at|%pin"
+              //% weight=81
+              export function SoilMoistureRead(pin: Light): number{
+                let lightRead = 0;
+
+                if(pin==0){
+                  lightRead =  pins.analogReadPin(AnalogPin.P0);
+                }else if(pin==1){
+                  lightRead =  pins.analogReadPin(AnalogPin.P1);
+                }else if(pin==2){
+                  lightRead =  pins.analogReadPin(AnalogPin.P2);
+                }
+
+                return lightRead;
+              }
+
+
+              //% blockId=maiji_Potentiometer block="Potentiometer read analog at|%pin"
+              //% weight=81
+              export function PotentiometerRead(pin: Light): number{
+                let lightRead = 0;
+
+                if(pin==0){
+                  lightRead =  pins.analogReadPin(AnalogPin.P0);
+                }else if(pin==1){
+                  lightRead =  pins.analogReadPin(AnalogPin.P1);
+                }else if(pin==2){
+                  lightRead =  pins.analogReadPin(AnalogPin.P2);
+                }
+
+                return lightRead;
+              }
+
+              //% blockId=maiji_Joystick_speed block="Joystick read speed at|%pin"
+              //% weight=81
+              export function JoystickSpeedRead(pin: A12): number{
+                let lightRead = 0;
+                if  (pin==0){
+                  lightRead =  pins.digitalReadPin(DigitalPin.P1);
+                  return lightRead;
+                }else{
+                  lightRead =  pins.digitalReadPin(DigitalPin.P0);
+                  return lightRead;
+                }
+              }
+
+              //% blockId=maiji_Joystick_angle block="Joystick read angle at|%pin"
+              //% weight=81
+              export function JoystickAngleRead(pin: A12): number{
+                let lightRead = 0;
+                if  (pin==0){
+                  lightRead =  pins.digitalReadPin(DigitalPin.P2);
+                  return lightRead;
+                }else{
+                  lightRead =  pins.digitalReadPin(DigitalPin.P1);
+                  return lightRead;
+                }
+              }
+
+
+
     //% blockId=maiji_motor_run block="Motor|%index|speed %speed"
     //% weight=85
     //% speed.min=-1023 speed.max=1023

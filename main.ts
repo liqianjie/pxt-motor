@@ -16,8 +16,8 @@ namespace Magibit {
 
 
     export enum P1316 {
-        P13 = DigitalPin.P13,
-        P16 = DigitalPin.P16
+        P13 = 0,
+        P16 = 1
     }
 
     export enum A1 {
@@ -141,6 +141,180 @@ namespace Magibit {
                 }
               }
 
+
+                    //% blockId=maiji_infrared block="Infrared read digital at|%pin"
+                    //% weight=81
+                    export function InfraredRead(pin: P1316): number{
+                      let lightRead = 0;
+
+                      if(pin==0){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P13);
+                      }else if(pin==1){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P16);
+                      }
+
+
+                      return lightRead;
+                    }
+
+                    //% blockId=maiji_ultrasonic_sensor block="Ultrasonic Sensor read digital at|%pin"
+                    //% weight=81
+                    export function UltrasonicSensorRead(pin: P1316): number{
+                      let lightRead = 0;
+                      if(pin==0){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P13);
+                      }else if(pin==1){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P16);
+                      }
+                      return lightRead;
+                    }
+
+                    //% blockId=maiji_air_temperature block="Air Temperature read digital at|%pin"
+                    //% weight=81
+                    export function AirTemperatureRead(pin: P1316): number{
+                      let lightRead = 0;
+                      if(pin==0){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P13);
+                      }else if(pin==1){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P16);
+                      }
+                      return lightRead;
+                    }
+
+                    //% blockId=maiji_air_humidity block="Air Humidity read digital at|%pin"
+                    //% weight=81
+                    export function AirHumidityRead(pin: P1316): number{
+                      let lightRead = 0;
+                      if(pin==0){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P13);
+                      }else if(pin==1){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P16);
+                      }
+                      return lightRead;
+                    }
+
+
+
+                    //% blockId=maiji_light_brightness block="Light Set brightness at|%pin brightness |%brightness"
+                    //% weight=81
+                    //% brightness.min=0 brightness.max=255
+                    export function LightBrightnessWrite(pin: Light, brightness:number): void{
+
+                      if(pin==0){
+                        pins.digitalWritePin(DigitalPin.P0, brightness);
+                      }else if(pin==1){
+                        pins.digitalWritePin(DigitalPin.P1, brightness);
+                      }else if(pin==2){
+                        pins.digitalWritePin(DigitalPin.P2, brightness);
+                      }
+
+                    }
+
+
+                    //% blockId=maiji_light_Twinkle block="Light |%pin Twinkle |%twinkle|ms"
+                    //% weight=81
+                    export function LightTwinkleWrite(pin: Light, twinkle:number): void{
+                      LightBrightnessWrite(pin, 255);
+                      basic.pause(twinkle );
+                      LightBrightnessWrite(pin, 0);
+                    }
+
+                    //% blockId=maiji_light_onoff block="Light |%pin status |%onoff"
+                    //% weight=81
+                    export function LightOnOffWrite(pin: Light, onoff:ONOFF): void{
+                      if(onoff==1){
+                        LightBrightnessWrite(pin, 255);
+                      }else{
+                        LightBrightnessWrite(pin, 0);
+                      }
+                    }
+
+                    /**
+                     * Servo Execute
+                     * @param index Servo Channel; eg: P0
+                     * @param degree [0-180] degree of servo; eg: 0, 90, 180
+                    */
+                      //% blockId=maji_servo block="Servo|%index|degree %degree"
+                      //% weight=100
+                      //% degree.min=0 degree.max=180
+                      export function Servo(pin: Servos, degree: number): void {
+                            //pins.digitalWritePin(pin, degree);
+                      }
+
+                      /**
+                       * Water Pump
+                      */
+                        //% blockId=waterpump_onoff block="Water Pump|%index|Status %onoff"
+                        //% weight=100
+                        //% degree.min=0 degree.max=180
+                        export function WaterPumpOnoff(index: Motors, onoff: ONOFF): void {
+                          if (index==1){
+                            if (onoff==1){
+                              pins.analogWritePin(AnalogPin.P12,1023);
+                            }else{
+                              pins.analogWritePin(AnalogPin.P12,0);
+                            }
+
+                          }else{
+                            if (onoff==1){
+                              pins.analogWritePin(AnalogPin.P15,1023);
+                            }else{
+                              pins.analogWritePin(AnalogPin.P15,0);
+                            }
+                          }
+                        }
+
+
+                  /**
+                         * Water Pump
+                        */
+                          //% blockId=waterpump_onoff_delay block="Water Pump|%index|Status %onoff delay %delay ms"
+                          //% weight=100
+                          //% degree.min=0 degree.max=180
+                          export function WaterPumpOnoffDelay(index: Motors, onoff: ONOFF, delay:number): void {
+                            let speed=0;
+                            if (index==1){
+
+                              speed = pins.analogReadPin(AnalogPin.P12);
+
+                              if (onoff==1){
+                                pins.analogWritePin(AnalogPin.P12,1023);
+                              }else{
+                                pins.analogWritePin(AnalogPin.P12,0);
+                              }
+
+                              basic.pause(delay );
+
+                              pins.analogWritePin(AnalogPin.P12,speed);
+
+                            }else{
+
+                              speed = pins.analogReadPin(AnalogPin.P15);
+
+                              if (onoff==1){
+                                pins.analogWritePin(AnalogPin.P15,1023);
+                              }else{
+                                pins.analogWritePin(AnalogPin.P15,0);
+                              }
+
+                              basic.pause(delay);
+
+                              pins.analogWritePin(AnalogPin.P15,speed);
+                            }
+                          }
+
+
+                    //% blockId=maiji_Motor_Speed_Sensor block="Motor Speed Sensor read digital at|%pin"
+                    //% weight=81
+                    export function MotorSpeedSensorRead(pin: P1316): number{
+                      let lightRead = 0;
+                      if(pin==0){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P13);
+                      }else if(pin==1){
+                        lightRead =  pins.digitalReadPin(DigitalPin.P16);
+                      }
+                      return lightRead;
+                    }
 
 
     //% blockId=maiji_motor_run block="Motor|%index|speed %speed"

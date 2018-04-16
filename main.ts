@@ -325,8 +325,7 @@ namespace Magibit {
                     }
 
 
-                    const changeLightEventId = 3100;
-                    let lastLight = 0;
+
 
     //% blockId=maiji_on_LightSensor_CHANGE block="light %connName| on change"
     export function onLightSensorEvent(connName: Light, handler: Action): void{

@@ -48,6 +48,14 @@ namespace Magibit {
         P16 = DigitalPin.P16
     }
 
+    export enum DIRECTION{
+      foreward = 0,
+      reverse = 1
+    }
+
+    const changeLightEventId = 3100;
+    let lastLight = 0;
+
 
     //% blockId=maiji_light block="Light read analog at |%pin"
     export function LightRead(pin: Light): number{
@@ -317,13 +325,37 @@ namespace Magibit {
                     }
 
 
+                    const changeLightEventId = 3100;
+                    let lastLight = 0;
+
+    //% blockId=maiji_on_LightSensor_CHANGE block="light %connName| on change"
+    export function onLightSensorEvent(connName: Light, handler: Action): void{
+      let  lightValue = LightRead(connName);
+      control.onEvent(changeLightEventId, lightValue, handler);
+
+          control.inBackground(() => {
+              while(true) {
+                  let lightValueNow = LightRead(connName);
+                  if (lightValue != lightValueNow) {
+                      lightValue = lightValueNow;
+                      control.raiseEvent(changeLightEventId, lightValue);
+                  }
+                  basic.pause(50);
+              }
+          })
+
+    }
+
+
+
+
     //% blockId=maiji_motor_run block="Motor|%index|speed %speed"
     //% weight=85
-    //% speed.min=-1023 speed.max=1023
+    //% speed.min=0 speed.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function MotorRun(index: Motors, speed: number): void {
+    export function MotorRun(index: Motors, speed: number, dir: DIRECTION): void {
       if (index==1){
-        if (speed>0){
+        if (dir==0){
           pins.digitalWritePin(DigitalPin.P8,0);
           pins.analogWritePin(AnalogPin.P12,speed);
         }else{
@@ -332,7 +364,7 @@ namespace Magibit {
         }
 
       }else{
-        if (speed>0){
+        if (dir==0){
           pins.digitalWritePin(DigitalPin.P14,0);
           pins.analogWritePin(AnalogPin.P15,speed);
         }else{

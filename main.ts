@@ -348,7 +348,7 @@ namespace Magibit {
 
 
 
-    //% blockId=maiji_motor_run block="Motor|%index|speed %speed"
+    //% blockId=maiji_motor_run block="Motor|%index|speed %speed|direction %dir"
     //% weight=85
     //% speed.min=0 speed.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4

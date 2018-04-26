@@ -329,7 +329,7 @@ namespace Magibit {
 
     //% blockId=maiji_on_LightSensor_CHANGE block="light %connName| on change"
     export function onLightSensorEvent(connName: Light, handler: Action){
-      let  lightValue = LightRead(connName);
+      //let  lightValue = LightRead(connName);
       /*control.onEvent(changeLightEventId, lightValue, handler);
 
           control.inBackground(() => {
